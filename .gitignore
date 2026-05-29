@@ -1,0 +1,35 @@
+# Python Environments
+venv/
+env/
+.env
+
+# Python Caches
+__pycache__/
+*.pyc
+*.pyo
+.pytest_cache/
+
+# VoiceGuard System Data (CRITICAL SECURITY)
+# DO NOT UPLOAD PII (Biometric data, embeddings, or voice samples)
+secure_database/
+*.pt
+*.wav
+*.mp3
+temp_audio/
+
+# Whisper & HuggingFace Caches
+~/.cache/whisper/
+.cache/
+
+# Large Model Weights (if downloaded locally)
+voiceguard_brain.pth
+
+# Logs
+*.log
+logs/
+
+# IDE and OS
+.vscode/
+.idea/
+.DS_Store
+Thumbs.db
