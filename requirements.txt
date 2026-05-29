@@ -1,0 +1,14 @@
+fastapi
+uvicorn
+python-multipart
+torch
+numpy
+librosa
+resemblyzer
+thefuzz
+python-Levenshtein
+requests
+streamlit
+sounddevice
+scipy
+openai-whisper
