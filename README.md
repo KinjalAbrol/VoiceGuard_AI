@@ -15,18 +15,33 @@ Two-WAV Defensive Strategy: Simultaneously processes audio for transcription (li
 FastAPI Microservice Backend: High-performance RESTful API completely decoupled from the UI.
 Streamlit Frontend: A sleek, minimal, enterprise-grade control panel for system interaction.
 🏗️ Architecture
-graph TD;
-    A[User Speaks OTP] --> B[Streamlit UI];
-    B -->|Audio Buffer| C[FastAPI Backend];
-    C --> D{Two-WAV Split};
-    D -->|Audio 1| E[Whisper Model];
-    E -->|Transcript Match| F[Liveness Check];
-    D -->|Audio 2| G[Resemblyzer];
-    G -->|GE2E Embedding| H[Cosine Similarity Engine];
-    H -->|Compare vs .pt| I[(Secure Local Volatile DB)];
-    F --> J{Auth Decision};
-    H --> J;
-    J -->|Success/Fail| B;
+flowchart TD
+    A[User] -->|Speaks random OTP phrase| B[Streamlit Frontend<br/>localhost:8501]
+    B -->|Audio Stream| C[FastAPI Backend<br/>localhost:8000]
+
+    subgraph "Backend Processing"
+        C --> D[Two-WAV Split]
+        D --> E[Path 1: Liveness Check]
+        D --> F[Path 2: Speaker Verification]
+
+        E --> G[Whisper ASR<br/>Transcribe Speech]
+        G --> H{OTP Matches?}
+
+        F --> I[Resemblyzer GE2E<br/>Generate Embedding]
+        I --> J[Compare with Stored.pt<br/>Cosine Similarity]
+        J --> K{Score > Threshold?}
+
+        H -->|Yes| L[AND Gate]
+        K -->|Yes| L
+        L --> M[Auth Success/Fail]
+    end
+
+    M --> B
+    B --> N[Access Granted/Denied]
+
+    style E fill:#e1f5fe
+    style F fill:#f3e5f5
+    style L fill:#c8e6c9
 
 🚀 Getting Started
 Prerequisites
