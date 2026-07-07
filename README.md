@@ -60,7 +60,7 @@ graph TD;
 
 1. **Clone the repository**
    ```bash
-   git clone https://github.com/keertipuri-32/VoiceGuard-AI-Powered-Voice-Authentication-System.git
+   git clone https://github.com/Kinjal Abrol/VoiceGuard-AI-Powered-Voice-Authentication-System.git
    cd VoiceGuard-AI-Powered-Voice-Authentication-System
    ```
 
