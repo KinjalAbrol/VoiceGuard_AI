@@ -36,7 +36,7 @@ By utilizing **OpenAI's Whisper** alongside **Resemblyzer's GE2E embeddings**, V
 
 ```mermaid
 graph TD;
-    A[User Speaks OTP] --> B[Streamlit UI];
+    A[User speaks random phrase given by the system] --> B[Streamlit UI];
     B -->|Audio Buffer| C[FastAPI Backend];
     C --> D{Two-WAV Split};
     D -->|Audio 1| E[Whisper Model];
